@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="es"><head>
+<html class="dark scroll-smooth" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NORTH SOUTH NICARAGUA | Kraken Protocol</title>
@@ -144,12 +144,12 @@
 <span class="font-space-grotesk text-2xl font-black tracking-tighter text-neutral-100 uppercase">NORTH SOUTH NICARAGUA</span>
 </div>
 <div class="hidden md:flex gap-8 items-center">
-<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-[#722F37] border-b-2 border-[#722F37] pb-1" href="#">Disciplinas</a>
-<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#horarios">Horario</a>
-<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#ubicacion">Ubicación</a>
-<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#">Sobre Nosotros</a>
+<a class="nav-item font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 border-b-2 border-transparent pb-1 transition-colors" href="#disciplinas">Disciplinas</a>
+<a class="nav-item font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 border-b-2 border-transparent pb-1 transition-colors" href="#horarios">Horario</a>
+<a class="nav-item font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 border-b-2 border-transparent pb-1 transition-colors" href="#ubicacion">Ubicación</a>
+<!--a class="nav-item font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 border-b-2 border-transparent pb-1 transition-colors" href="#">Sobre Nosotros</a-->
 </div>
-<button class="bg-[#722F37] text-white px-6 py-2 rounded-full font-bold text-xs active:scale-95 duration-150 transition-all uppercase tracking-widest">
+<button class="bg-[#722F37] text-white px-6 py-2 rounded-full font-bold text-xs active:scale-95 duration-150 transition-all uppercase tracking-widest" onclick="window.location.href='#reservaciones'">
             Inscribirse
         </button>
 </div>
@@ -203,14 +203,14 @@
 <!-- Logo Integration -->
 <div class="relative z-20 hero-logo-container group z-10 rounded-full" style="mask-image: radial-gradient(circle at center, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 75%);">
 <div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
-<img alt="North South Nicaragua Logo" class="relative w-full max-w-[500px] h-auto object-contain brightness-125 contrast-110 transition-transform duration-1000 group-hover:scale-105" src="logo.png"/>
+<img alt="North South Nicaragua Logo" class="relative w-full max-w-[500px] h-auto object-contain brightness-125 contrast-110 transition-transform duration-1000 group-hover:scale-105" src="logo2.webp"/>
 <!-- Laboratory Branding Overlay -->
 </div>
 </div>
 </div>
 </section>
 <!-- Our Philosophy Section -->
-<section class="py-32 relative overflow-hidden bg-surface-container-low">
+<section class="py-32 relative overflow-hidden bg-surface-container-low" id="disciplinas">
 <div class="absolute top-0 right-0 w-1/2 h-full ink-bleed pointer-events-none opacity-40"></div>
 <div class="container mx-auto px-8">
 <div class="grid md:grid-cols-12 gap-12">
@@ -403,7 +403,7 @@
 </div>
 </section>
 <!-- Form Section -->
-<section class="py-32 relative bg-background">
+<section class="py-32 relative bg-background" id="reservaciones">
 <div class="container mx-auto px-8 max-w-4xl">
 <div class="bg-surface-container-high p-12 clipped-corner relative overflow-hidden border border-white/5">
 <div class="absolute top-0 left-0 w-2 h-full bg-primary"></div>
@@ -457,4 +457,58 @@
 </div>
 </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        const activeClasses = ['text-[#722F37]', 'border-[#722F37]'];
+        const inactiveClasses = ['text-neutral-400', 'hover:text-neutral-100', 'border-transparent'];
+
+        // Scroll suave con offset por el header (menú superior fijo)
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 100; // Altura aproximada del header
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                // Reset to inactive state
+                item.classList.remove(...activeClasses);
+                item.classList.add(...inactiveClasses);
+
+                // Set active item
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.remove(...inactiveClasses);
+                    item.classList.add(...activeClasses);
+                }
+            });
+        });
+    });
+</script>
 </body></html>
