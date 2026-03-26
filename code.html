@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NORTH SOUTH NICARAGUA | Kraken Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#fcf8f8",
+              "primary-fixed": "#722F37",
+              "on-secondary-fixed-variant": "#5a5c5c",
+              "inverse-on-surface": "#565554",
+              "surface-container-low": "#131313",
+              "surface-container-lowest": "#000000",
+              "on-background": "#ffffff",
+              "on-tertiary": "#340059",
+              "secondary-fixed": "#e3e2e2",
+              "on-error-container": "#ffa8a3",
+              "outline": "#777575",
+              "surface-bright": "#2c2c2c",
+              "primary-container": "#722F37",
+              "surface-container-high": "#201f1f",
+              "primary-dim": "#5d262d",
+              "on-tertiary-fixed": "#280047",
+              "on-surface-variant": "#adaaaa",
+              "on-secondary": "#515252",
+              "on-tertiary-fixed-variant": "#580092",
+              "tertiary-container": "#9d05ff",
+              "surface-variant": "#262626",
+              "error-container": "#9f0519",
+              "secondary-dim": "#d4d4d4",
+              "on-secondary-container": "#d0d0d0",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#5d262d",
+              "secondary-fixed-dim": "#d4d4d4",
+              "on-primary-fixed-variant": "#ffffff",
+              "on-secondary-fixed": "#3e3f40",
+              "error-dim": "#d7383b",
+              "on-tertiary-container": "#ffffff",
+              "on-surface": "#ffffff",
+              "on-error": "#490006",
+              "surface": "#0e0e0e",
+              "secondary-container": "#464747",
+              "surface-container-highest": "#262626",
+              "tertiary": "#c47fff",
+              "inverse-primary": "#722F37",
+              "tertiary-fixed": "#d199ff",
+              "surface-tint": "#722F37",
+              "tertiary-fixed-dim": "#c787ff",
+              "surface-container": "#1a1919",
+              "outline-variant": "#494847",
+              "background": "#0e0e0e",
+              "tertiary-dim": "#a533ff",
+              "surface-dim": "#0e0e0e",
+              "error": "#ff716c",
+              "secondary": "#e3e2e2",
+              "on-primary-container": "#ffffff",
+              "primary": "#722F37",
+              "on-primary-fixed": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .clipped-corner {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+        }
+        .technical-grid {
+            background-image: radial-gradient(circle, rgba(114, 47, 55, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .ink-bleed {
+            background: radial-gradient(circle at 50% 50%, rgba(114, 47, 55, 0.15) 0%, transparent 70%);
+        }
+        
+        /* Kinetic & Organic Animations */
+        @keyframes shard-float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translate(15px, -15px) rotate(5deg); opacity: 0.9; }
+        }
+        .kinetic-shard {
+            position: absolute;
+            background: linear-gradient(135deg, #722F37 0%, transparent 100%);
+            clip-path: polygon(20% 0%, 100% 40%, 70% 100%, 0% 80%);
+            animation: shard-float var(--d, 5s) infinite ease-in-out;
+            filter: drop-shadow(0 0 10px #722F37);
+        }
+
+        @keyframes ink-swirl {
+            0% { transform: scale(1) rotate(0deg); filter: blur(40px); opacity: 0.3; }
+            50% { transform: scale(1.2) rotate(180deg); filter: blur(60px); opacity: 0.5; }
+            100% { transform: scale(1) rotate(360deg); filter: blur(40px); opacity: 0.3; }
+        }
+        .organic-swirl {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at center, #722F37 0%, transparent 60%);
+            animation: ink-swirl 15s infinite linear;
+            mix-blend-mode: color-dodge;
+        }
+
+        .hero-logo-container {
+            mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
+            -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(114, 47, 55, 0.2);
+            position: absolute;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-space-grotesk text-2xl font-black tracking-tighter text-neutral-100 uppercase">NORTH SOUTH NICARAGUA</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-[#722F37] border-b-2 border-[#722F37] pb-1" href="#">Disciplinas</a>
+<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#horarios">Horario</a>
+<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#ubicacion">Ubicación</a>
+<a class="font-space-grotesk font-bold uppercase tracking-widest text-xs text-neutral-400 hover:text-neutral-100 transition-colors" href="#">Sobre Nosotros</a>
+</div>
+<button class="bg-[#722F37] text-white px-6 py-2 rounded-full font-bold text-xs active:scale-95 duration-150 transition-all uppercase tracking-widest">
+            Inscribirse
+        </button>
+</div>
+</nav>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden technical-grid">
+<!-- Background Texture Layers -->
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none"></div>
+<div class="scanline"></div>
+<div class="container mx-auto px-8 grid md:grid-cols-2 gap-16 items-center relative z-10">
+<div>
+<div class="inline-flex items-center gap-3 px-4 py-1.5 bg-primary/10 border border-primary/30 rounded-full mb-8 backdrop-blur-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label text-[10px] tracking-[0.3em] text-primary uppercase font-bold">Kraken Protocol Enforced</span>
+</div>
+<h1 class="font-headline text-7xl md:text-[9rem] font-black tracking-tighter leading-[0.85] mb-8 uppercase">
+                DOMINA EL <br/>
+<span class="text-primary italic relative inline-block">
+                    ARTE.
+                    <span class="absolute -bottom-2 left-0 w-full h-2 bg-primary/20 blur-sm"></span>
+</span>
+</h1>
+<p class="text-on-surface-variant text-xl max-w-md mb-10 leading-relaxed font-light border-l-2 border-primary/30 pl-6">
+                Forjamos la élite a través de la precisión quirúrgica y la fuerza visceral. El epicentro del combate moderno en Estelí.
+            </p>
+<div class="flex flex-wrap gap-6">
+<button class="bg-primary text-white px-12 py-5 rounded-none font-bold hover:shadow-[0_0_40px_rgba(114,47,55,0.5)] transition-all uppercase tracking-[0.2em] text-sm clipped-corner">
+                    EMPEZAR AHORA
+                </button>
+<button class="border border-white/10 text-white px-12 py-5 rounded-none font-bold hover:bg-white/5 transition-all uppercase tracking-[0.2em] text-sm clipped-corner">
+                    VER HORARIOS
+                </button>
+</div>
+</div>
+<div class="relative h-[600px] flex items-center justify-center">
+<!-- Kinetic/Organic Energy Core -->
+<div class="absolute inset-0 flex items-center justify-center z-0">
+<!-- Organic BJJ Flow -->
+<div class="organic-swirl" style="animation-duration: 25s; opacity: 0.2;"></div>
+<div class="organic-swirl" style="animation-duration: 30s; opacity: 0.15; animation-direction: reverse; transform: scale(1.1);"></div>
+<!-- Geometric Muay Thai Shards -->
+<div class="kinetic-shard w-32 h-32 top-10 right-10" style="--d: 4s;"></div>
+<div class="kinetic-shard w-48 h-20 bottom-20 left-0" style="--d: 7s;"></div>
+<div class="kinetic-shard w-24 h-40 top-1/4 left-1/4" style="--d: 6s; opacity: 0.4;"></div>
+<div class="kinetic-shard w-64 h-8 bottom-0 right-1/4" style="--d: 5s; transform: rotate(15deg);"></div>
+</div>
+<!-- Logo Integration -->
+<div class="relative z-20 hero-logo-container group z-10 rounded-full" style="mask-image: radial-gradient(circle at center, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 75%);">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full group-hover:bg-primary/30 transition-all duration-700"></div>
+<img alt="North South Nicaragua Logo" class="relative w-full max-w-[500px] h-auto object-contain brightness-125 contrast-110 transition-transform duration-1000 group-hover:scale-105" src="logo2.png"/>
+<!-- Laboratory Branding Overlay -->
+</div>
+</div>
+</div>
+</section>
+<!-- Our Philosophy Section -->
+<section class="py-32 relative overflow-hidden bg-surface-container-low">
+<div class="absolute top-0 right-0 w-1/2 h-full ink-bleed pointer-events-none opacity-40"></div>
+<div class="container mx-auto px-8">
+<div class="grid md:grid-cols-12 gap-12">
+<div class="md:col-span-5">
+<h2 class="font-headline text-5xl font-bold mb-8 uppercase tracking-tighter">NUESTRA <br/><span class="text-primary italic">FILOSOFÍA</span></h2>
+<div class="h-1 w-24 bg-primary mb-8"></div>
+<p class="text-on-surface-variant leading-loose mb-6">
+                        En North South Nicaragua, no solo enseñamos técnicas; cultivamos la mentalidad del depredador moderno. Fusionamos la **precisión técnica** de los sistemas modernos con la **fuerza primordial** del instinto humano.
+                    </p>
+</div>
+<div class="md:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-highest p-8 border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-colors">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-primary">target</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-4 uppercase">Precisión</h3>
+<p class="text-sm text-on-surface-variant">Cada movimiento es una ecuación. Optimizamos el gasto de energía para maximizar el impacto.</p>
+</div>
+<div class="bg-surface-container-highest p-8 border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-colors">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-primary">bolt</span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-4 uppercase">Fuerza Primal</h3>
+<p class="text-sm text-on-surface-variant">Conectamos con el instinto básico de supervivencia para generar una potencia incontrolable.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BJJ Section -->
+<section class="py-24 bg-black">
+<div class="container mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/2 relative">
+<div class="clipped-corner overflow-hidden border-2 border-primary/20 bg-primary/5">
+<img alt="BJJ Training" class="w-full grayscale contrast-125 hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYvMJ9hH0B-aOwzEdAUYVlg_4aFYImnnAs9aNVc4B0BcxEnic7trtFYgLU5IFc3QF8YutstdJ2hRUFnSEm0X8FogprAYbNlQp7_dL1PqjiL8oIrmCL3a0gSsGGAAGIru_7FtU1oA671NLmDmI32H1Dz_RcseoqkOCdMqztIwI6gJm6CHWEqR-34sE-bhDz_h5coe77DsDFXBktTdR4RBhS5kcdLSVOr3MSnWQhNw3fV3NMJiH4YYGn0q3JX4SqbsiTJGLiU3i_xd0"/>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<span class="font-label text-primary tracking-widest text-sm mb-4 block">MODALITY_01</span>
+<h2 class="font-headline text-6xl font-black text-white mb-8 tracking-tighter uppercase">Brazilian <br/>Jiu-Jitsu</h2>
+<div class="space-y-6 mb-12">
+<div class="bg-surface-container-high p-4 flex justify-between items-center border-l-2 border-primary">
+<span class="font-label text-xs text-on-surface-variant uppercase">Efectividad Global</span>
+<span class="font-headline font-bold text-primary">98%</span>
+</div>
+<div class="bg-surface-container-high p-4 flex justify-between items-center border-l-2 border-primary">
+<span class="font-label text-xs text-on-surface-variant uppercase">Control Terrestre</span>
+<span class="font-headline font-bold text-primary">ELITE</span>
+</div>
+</div>
+<button class="bg-white text-black font-bold px-12 py-4 rounded-full hover:bg-primary hover:text-white transition-all flex items-center gap-4 group uppercase tracking-widest text-xs">
+                        VER CLASES
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Muay Thai Section -->
+<section class="relative py-32 bg-surface overflow-hidden">
+<div class="absolute inset-0 skew-y-3 bg-primary/5 origin-right pointer-events-none translate-y-20"></div>
+<div class="container mx-auto px-8 relative">
+<div class="flex flex-col md:flex-row-reverse gap-16 items-center">
+<div class="w-full md:w-1/2 relative">
+<div class="clipped-corner overflow-hidden rotate-2 shadow-2xl shadow-primary/20">
+<img alt="Muay Thai" class="w-full brightness-75 contrast-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ7NK1FFLAuF9zeKJXtXN2GBcJPAB-EOymnHMMCuENqL2AdgNn5-AMaGeSY7iMp4mZ3CHVmjdVuLo5gGvnL_kZZVHk2o1-L-dcMnvBE59VQlwTKiEm0ujntoYCUpaFYD3yiNonIbAzzECixYgt6P8aCooM-zg8gsK82mH7skj6C0EOdayXOSudhpmd1dup-40p5QLaF1fwo2CFh3_3r7lGeqlgFmpVp_Ynwem2GNiYLqwTT6k8nj9yF1d8EEof9Ur4gYCo24SYRmE"/>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<span class="font-label text-primary tracking-widest text-sm mb-4 block">MODALITY_02</span>
+<h2 class="font-headline text-6xl font-black text-white mb-8 tracking-tighter uppercase">Muay <br/>Thai</h2>
+<p class="text-on-surface-variant text-lg mb-10 leading-relaxed">
+                        El arte de las ocho extremidades. Desarrolla poder explosivo, resistencia inquebrantable y una defensa impenetrable.
+                    </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="border-t border-primary/20 pt-4">
+<div class="text-2xl font-black font-headline text-white">8+</div>
+<div class="text-xs font-label text-primary uppercase">Armas de Combate</div>
+</div>
+<div class="border-t border-primary/20 pt-4">
+<div class="text-2xl font-black font-headline text-white">MAX</div>
+<div class="text-xs font-label text-primary uppercase">Intensidad Cardio</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Galería Section -->
+<section class="py-32 bg-neutral-950 overflow-hidden">
+<div class="container mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<span class="font-label text-primary tracking-widest text-sm uppercase block mb-2">Visual Protocol</span>
+<h2 class="font-headline text-5xl font-bold text-white uppercase leading-none">GALERÍA DE <br/><span class="text-primary italic">COMBATE</span></h2>
+</div>
+<div class="h-[2px] flex-grow bg-gradient-to-r from-primary/50 to-transparent hidden md:block mx-12 mb-4"></div>
+<div class="text-right">
+<p class="text-on-surface-variant max-w-xs text-sm">Registro visual de la intensidad, la técnica y el espíritu de North South Nicaragua.</p>
+</div>
+</div>
+<div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+<div class="break-inside-avoid relative group overflow-hidden clipped-corner">
+<img alt="BJJ Training" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwsn_Pl3lBF66adPb4hG7H4nLE-aTcQf2TYyh0ZVEbGPtrmFVtwT2l68PcK1U8C9RoWlyfRAxRRyIM-zGSccJChl0dpd9YfJfeSvTNk0YLE0hT4g4mE-1lx4Mj77VDG45hKrkncyQSbnENvyuMk5rkiUYMUiipy3m2Z22AVk_KwzcXs5FIimePzWYWDGtsKwxzqADQavbl9k_vZqhSA1JJoZBbbhrJKjRxQLpSZnjcLUcVLcCqXlELhVQNUfxBJnp5eolzOlSCD8U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Grappling Session</span>
+</div>
+</div>
+<div class="break-inside-avoid relative group overflow-hidden border border-white/5">
+<img alt="Muay Thai Fighter" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnH7tc0z67qxaf-owbJdtwrYvpzipv2IET0q9ldo4c2fF3woKhTrOAV2hIwAcJo0t6T2MGJab3OmH_MOc3ikYXeLPROPMGjK-9PZH1oFxEQmQFB6HR6EknL91jRdcPT8TuJNHPC0qw0G5ckZXDZQLmVmzVWmqdM9LEXRY3SwbI1X71BuGfef8tZyE7JrrN_ruE-FsMd4p585As5jk_gzgzLfinhQaETrKKOXy9T6MJyfTlRSGJFgxNZ9dzbyMWJLVV4ggWahQWJZA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Muay Thai Power</span>
+</div>
+</div>
+<div class="break-inside-avoid relative group overflow-hidden clipped-corner">
+<img alt="Athlete Focused" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoe8y7On5jtnPEUptjaI0YyfeHyKzfI92OC8j0jg8ndKE6XftnyKta8byOyYWVxkj-xvWQ1MmhQtL0U4IkNU1xkzbIqc8RdoamRX0l31I9r5jyrXgLD1t5qwXyAv-NuPnRnf58m6U30nDXtXfpIdpZeWQeC-m9aHaSc0bCrqa2wiq399zqDPDOYWfHN9NgjpAd-I088JIFHqfO-7K3RRmYRk32AemvjHdFOx_elIBp_OKE2JwR11ipcpG8RYVQEODBfJsBwMhSdD4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Technical Precision</span>
+</div>
+</div>
+<div class="break-inside-avoid relative group overflow-hidden clipped-corner">
+<img alt="BJJ Intensive Training" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZNp_09kDTcDZSUggOasNFI5wqT1714ueD7-97K08AG8P74V4zl6lZ9V4oh5UMm25xY_RblV35WRNkYCAKjHjYRjvxfinkEfiAXo4P7qJ53gKnlBd1hIaxOvnYXflfoD_9SZri0C9Y3Ue6cYYNHzjACbErARG2zYJEzYPXZsoTwAgmCIqtog-H85b7R9u4QgOLS47P3MyXeACMEW-rjji8i-2pDCuIQRUQfWa5R5MsKmpekclmtCaYk03k9deINF62md4NZuKeaXM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Kraken Pressure</span>
+</div>
+</div><div class="break-inside-avoid relative group overflow-hidden border border-white/5">
+<img alt="Muay Thai Clinch" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8gfPYMoeRh7Lxas8oP-0BBxbsOmFzsicEVkdmu5BhuNuqRcS0ziORxLOC49AC3Neq79ucUrCdU9E9Ik5CQG1Po9imwZiuxb_5JYVteYHWiFpDnipYtmJ4IsAakohp0HblJ9OfGclMsyx4hDHY2ADfAcANqOzgcnN-VdtGIacPbodCLaf3r2i9x3ZNl9Ps8eD7v5bzpLCWvuj7DyB84mHjC5DgUAjFHu2yFwGUQQCNp_565O8eCqJu7vlrWrWjHkXcxLIEaxOoR_8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Tactical Striking</span>
+</div>
+</div><div class="break-inside-avoid relative group overflow-hidden clipped-corner">
+<img alt="BJJ Submission Technique" class="w-full grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxCSefLf7ohXoRrJF2pHC2gIOcIwtvfpmyQ-EOAjQFxQTTScNDCBshZl51lURp6S7KME3lTgXTXvxiZ2x5QakEip2ZqQjM8VX-L-YTgTzbePTDQnbc-tYOelDXRCCtx065LMe_Q7a5CrwNbGTRDz5sRi5Mf8wdqYimwDiU13sUuVTdXKundFZJEBlEv7Vpc5gv5gNljPc-BKkGnlAg81d-D3a9Ob4muE4n8vZ2meVsdvBSO6qxbXQT2WaeFD3k2szCAz2R8s0l5dQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="font-label text-xs text-primary uppercase">Protocol Zero Control</span>
+</div>
+</div></div>
+</div>
+</section>
+<!-- Schedule Section -->
+<section class="py-32 bg-surface-container-low" id="horarios">
+<div class="container mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="font-headline text-5xl font-bold text-white mb-4 uppercase">HORARIOS</h2>
+<p class="font-label text-primary tracking-[0.3em] text-[10px] uppercase font-bold">Optimiza tu tiempo, maximiza tu potencial</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b border-white/10"><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Hora</th><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Lunes</th><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Martes</th><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Miércoles</th><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Jueves</th><th class="py-6 px-4 text-left font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Viernes</th></tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-primary/5 transition-colors"><td class="py-8 px-4 font-headline font-bold text-white">08:00 AM</td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td><td class="py-8 px-4"><span class="bg-primary/20 text-primary text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Físico</span></td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td><td class="py-8 px-4"><span class="bg-primary/20 text-primary text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Físico</span></td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td></tr>
+<tr class="hover:bg-primary/5 transition-colors"><td class="py-8 px-4 font-headline font-bold text-white">09:00 AM</td><td class="py-8 px-4">-</td><td class="py-8 px-4"><span class="bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest shadow-lg shadow-primary/20">BJJ Gi</span></td><td class="py-8 px-4">-</td><td class="py-8 px-4"><span class="bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest shadow-lg shadow-primary/20">BJJ Gi</span></td><td class="py-8 px-4">-</td></tr>
+<tr class="hover:bg-primary/5 transition-colors"><td class="py-8 px-4 font-headline font-bold text-white">07:00 PM</td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td><td class="py-8 px-4"><span class="bg-primary/20 text-primary text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Físico</span></td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td><td class="py-8 px-4"><span class="bg-primary/20 text-primary text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Físico</span></td><td class="py-8 px-4"><span class="bg-secondary-container text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest">Muay Thai</span></td></tr>
+<tr class="hover:bg-primary/5 transition-colors"><td class="py-8 px-4 font-headline font-bold text-white">08:00 PM</td><td class="py-8 px-4">-</td><td class="py-8 px-4"><span class="bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest shadow-lg shadow-primary/20">BJJ Gi</span></td><td class="py-8 px-4">-</td><td class="py-8 px-4"><span class="bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-none uppercase tracking-widest shadow-lg shadow-primary/20">BJJ Gi</span></td><td class="py-8 px-4">-</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="w-full relative bg-background overflow-hidden" id="ubicacion">
+<div class="h-[600px] relative w-full group">
+<div class="absolute inset-0 bg-neutral-900 overflow-hidden">
+<iframe allowfullscreen="" class="w-full h-full grayscale invert opacity-50 contrast-125 brightness-75 transition-all duration-700 group-hover:opacity-70 group-hover:grayscale-0 group-hover:invert-0" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13070.868337114242!2d-86.36323641761402!3d13.099667446510763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f718d36f4ab16bf%3A0x6ad67a127bdbf2a8!2sFitBox%20Cross%20Training!5e0!3m2!1ses!2sni!4v1774492936150!5m2!1ses!2sni" style="border:0;"></iframe>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40 pointer-events-none"></div>
+<div class="absolute inset-0 technical-grid opacity-20 pointer-events-none"></div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+<div class="relative group/pin">
+<div class="absolute -inset-8 bg-primary/30 rounded-full blur-2xl animate-pulse"></div>
+<div class="relative flex flex-col items-center" style="top: 70px;left: -10px;">
+<div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(114,47,55,0.6)] border-2 border-white/20">
+<span class="material-symbols-outlined fill-1">location_on</span>
+</div>
+<div class="mt-4 bg-surface-container-high border border-white/10 p-6 backdrop-blur-md clipped-corner shadow-2xl min-w-[280px]">
+<span class="font-label text-primary text-[10px] tracking-widest uppercase block mb-1">Base of Operations</span>
+<h3 class="font-headline text-xl font-bold text-white mb-2">NORTH SOUTH NICARAGUA</h3>
+<p class="text-on-surface-variant text-xs mb-4">FitBox Cross Training del Centro Sor María Romero, 300 metros al Norte, Estelí, Nicaragua.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-tighter hover:text-white transition-colors" href="https://maps.app.goo.gl/PQSdRRMtX9b6cDu98" target="_blank">
+                                Obtener Direcciones
+                                <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<section class="py-32 relative bg-background">
+<div class="container mx-auto px-8 max-w-4xl">
+<div class="bg-surface-container-high p-12 clipped-corner relative overflow-hidden border border-white/5">
+<div class="absolute top-0 left-0 w-2 h-full bg-primary"></div>
+<div class="relative z-10">
+<h2 class="font-headline text-4xl font-bold mb-4 uppercase tracking-tighter">RESERVA TU CLASE GRATIS</h2>
+<p class="text-on-surface-variant mb-10 font-light">Sin compromisos. Experimenta el sistema North South de primera mano.</p>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-1">
+<label class="font-label text-[10px] text-primary uppercase tracking-[0.2em] font-bold">Nombre Completo</label>
+<input class="w-full bg-surface-container-highest/50 border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-white py-4 rounded-none placeholder:text-white/10" placeholder="Escribe aquí..." type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label text-[10px] text-primary uppercase tracking-[0.2em] font-bold">WhatsApp / Tel</label>
+<input class="w-full bg-surface-container-highest/50 border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-white py-4 rounded-none placeholder:text-white/10" placeholder="+505 0000 0000" type="tel"/>
+</div>
+<div class="md:col-span-2 space-y-1">
+<label class="font-label text-[10px] text-primary uppercase tracking-[0.2em] font-bold">Disciplina de Interés</label>
+<select class="w-full bg-surface-container-highest/50 border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-white py-4 rounded-none">
+<option>Brazilian Jiu-Jitsu</option>
+<option>Muay Thai</option>
+<option>Acondicionamiento Físico</option>
+</select>
+</div>
+<div class="md:col-span-2 flex justify-end mt-4">
+<button class="group relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-none bg-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-primary/50 clipped-corner transition-all">
+<span class="relative px-12 py-5 transition-all ease-in duration-75 bg-neutral-900 group-hover:bg-opacity-0 font-bold text-white uppercase tracking-[0.3em] text-xs">
+                                    Enviar Solicitud
+                                </span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-950 w-full py-16 border-t border-white/5 font-inter text-sm tracking-wide">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-space-grotesk font-black text-neutral-200 text-2xl mb-2 tracking-tighter uppercase">NORTH SOUTH NICARAGUA</span>
+<p class="font-space-grotesk text-[10px] tracking-[0.4em] uppercase text-primary font-bold">KRAKEN PROTOCOL ENFORCED.</p>
+</div>
+<div class="flex gap-12">
+<a class="text-neutral-600 hover:text-white transition-colors uppercase font-space-grotesk text-[10px] tracking-widest font-bold" href="#">Privacidad</a>
+<a class="text-neutral-600 hover:text-white transition-colors uppercase font-space-grotesk text-[10px] tracking-widest font-bold" href="#">Términos</a>
+<a class="text-[#722F37] font-bold uppercase font-space-grotesk text-[10px] tracking-widest" href="#">Contacto</a>
+</div>
+<div class="text-center md:text-right">
+<p class="font-space-grotesk text-[10px] tracking-[0.2em] uppercase text-neutral-600 font-bold">© 2024 NORTH SOUTH NICARAGUA. V.1.0</p>
+</div>
+</div>
+</footer>
+</body></html>
